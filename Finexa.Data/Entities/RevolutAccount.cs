@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Finexa.Data.Entities
 {
-    public class Revolut : Account
+    public class RevolutAccount : Account
     {
         public RevolutType Type { get; set; }
 
-        public Revolut(string firstname, string lastname, RevolutType revolutType) : base(firstname, lastname)
+        public RevolutAccount(string firstname, string lastname, RevolutType revolutType) : base(firstname, lastname)
         {
             AccountType = AccountType.Revolut;
             Type = revolutType;
