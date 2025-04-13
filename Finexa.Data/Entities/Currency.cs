@@ -14,5 +14,9 @@ namespace Finexa.Data.Entities
         public string Name { get; set; } = string.Empty;
         public string Symbol { get; set; } = string.Empty;
         public CurrencyType Type { get; set; }
+
+        public ICollection<FiatWallet> FiatWallets { get; set; } = new List<FiatWallet>();
+        public ICollection<DigitalWallet> DigitalWallets { get; set; } = new List<DigitalWallet>();
+        public ICollection<Platform> SupportedPlatforms { get; set; } = new List<Platform>();
     }
 }

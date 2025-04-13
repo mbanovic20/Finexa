@@ -8,6 +8,7 @@ namespace Finexa.Data.Entities
 {
     public class FiatWallet : Wallet
     {
+        public int CurrencyId { get; set; }
         public Currency? Currency { get; set; }
     }
 }
