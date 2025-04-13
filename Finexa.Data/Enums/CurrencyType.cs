@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Finexa.Data.Entities
+namespace Finexa.Data.Enums
 {
-    public class CryptoWallet : VirtualWallet
+    public enum CurrencyType
     {
-        public int AccountId { get; set; }
+        Fiat,
+        Crypto
     }
 }

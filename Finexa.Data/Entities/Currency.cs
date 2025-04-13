@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Finexa.Data.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Finexa.Data.Entities
 {
-    public abstract class Wallet
+    public class Currency
     {
         public int Id { get; set; }
+        public string Code { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
-        public decimal Balance { get; set; }
-        public int UserId { get; set; }
-        public User? User { get; set; }
+        public string Symbol { get; set; } = string.Empty;
+        public CurrencyType Type { get; set; }
     }
 }

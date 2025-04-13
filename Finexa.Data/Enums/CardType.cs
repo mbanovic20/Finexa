@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace Finexa.Data.Enums
 {
-    public enum AccountType
+    public enum CardType
     {
-        Revolut,
-        Zaba
+        Debit,
+        Credit,
+        Prepaid,
+        Virtual,
+        Business,
+        Other
     }
 }

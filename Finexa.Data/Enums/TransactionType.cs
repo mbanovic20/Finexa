@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Finexa.Data.Entities
+namespace Finexa.Data.Enums
 {
-    public class EWallet : VirtualWallet
+    public enum TransactionType
     {
-
+        Income,
+        Expense,
+        Transfer
     }
 }

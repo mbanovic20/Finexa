@@ -1,5 +1,4 @@
-﻿using Finexa.Data.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +8,6 @@ namespace Finexa.Data.Entities
 {
     public class FiatWallet : Wallet
     {
-        public FiatWallet()
-        {
-            Type = WalletType.Fiat;
-        }
+        public Currency? Currency { get; set; }
     }
 }
