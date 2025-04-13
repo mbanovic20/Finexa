@@ -22,6 +22,10 @@ namespace Finexa.Data.Entities
         public int? TargetWalletId { get; set; }
         public Wallet? TargetWallet { get; set; }
 
+        public int? DayId { get; set; }
+        public Day? Day { get; set; }
+
+
         public int UserId { get; set; }
         public User User { get; set; } = new User();
     }
