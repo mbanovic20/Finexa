@@ -38,22 +38,30 @@ namespace Finexa.Data.Db_Context
                 .HasValue<FiatWallet>("Fiat")
                 .HasValue<DigitalWallet>("Digital");
 
+            modelBuilder.Entity<Wallet>()
+                .Property(w => w.Balance)
+                .HasPrecision(18, 2);
+
             // Currency ↔ Wallet
             modelBuilder.Entity<FiatWallet>()
                 .HasOne(w => w.Currency)
                 .WithMany(c => c.FiatWallets)
-                .HasForeignKey(w => w.CurrencyId);
+                .HasForeignKey(w => w.CurrencyId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<DigitalWallet>()
-                .HasOne(w => w.Currency)
+                .HasOne(dw => dw.Currency)
                 .WithMany(c => c.DigitalWallets)
-                .HasForeignKey(w => w.CurrencyId);
+                .HasForeignKey(dw => dw.CurrencyId)
+                .OnDelete(DeleteBehavior.NoAction);
+
 
             // Wallet ↔ Platform
             modelBuilder.Entity<DigitalWallet>()
                 .HasOne(w => w.Platform)
                 .WithMany(p => p.DigitalWallets)
-                .HasForeignKey(w => w.PlatformId);
+                .HasForeignKey(w => w.PlatformId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             // DigitalWallet ↔ Card
             modelBuilder.Entity<DigitalWallet>()
@@ -83,17 +91,15 @@ namespace Finexa.Data.Db_Context
             // User ↔ Wallet
             modelBuilder.Entity<Wallet>()
                 .HasOne(w => w.User)
-                .WithMany(u => u.FiatWallets)
-                .HasForeignKey(w => w.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<DigitalWallet>()
-                .HasOne(w => w.User)
-                .WithMany(u => u.DigitalWallets)
+                .WithMany(u => u.Wallets)
                 .HasForeignKey(w => w.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             // Transaction mapping
+            modelBuilder.Entity<Transaction>()
+                .Property(t => t.Amount)
+                .HasPrecision(18, 2);
+
             modelBuilder.Entity<Transaction>()
                 .HasOne(t => t.Wallet)
                 .WithMany()
@@ -137,6 +143,18 @@ namespace Finexa.Data.Db_Context
                 .WithOne(d => d.Week)
                 .HasForeignKey(d => d.WeekId)
                 .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<Day>()
+                .HasOne(d => d.Month)
+                .WithMany(m => m.Days)
+                .HasForeignKey(d => d.MonthId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Day>()
+                .HasOne(d => d.Week)
+                .WithMany(w => w.Days)
+                .HasForeignKey(d => d.WeekId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

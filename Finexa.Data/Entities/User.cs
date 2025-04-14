@@ -16,8 +16,7 @@ namespace Finexa.Data.Entities
         public string PasswordHashed { get; set; } = string.Empty;
         public string Salt { get; set; } = string.Empty;
 
-        public ICollection<FiatWallet> FiatWallets { get; set; } = new List<FiatWallet>();
-        public ICollection<DigitalWallet> DigitalWallets { get; set; } = new List<DigitalWallet>();
+        public ICollection<Wallet> Wallets { get; set; } = new List<Wallet>();
         public ICollection<Card> Cards { get; set; } = new List<Card>();
     }
 }

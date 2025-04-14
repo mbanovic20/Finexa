@@ -8,6 +8,7 @@ namespace Finexa.Data.Entities
 {
     public class Month
     {
+        public int Id { get; set; }
         public int Value { get; set; }
 
         public int YearId { get; set; }

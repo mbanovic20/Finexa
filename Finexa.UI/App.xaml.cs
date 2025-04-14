@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System.Windows;
-using Finexa.Data.DbContext;
+using Finexa.Data.Db_Context;
 
 namespace Finexa.UI
 {
